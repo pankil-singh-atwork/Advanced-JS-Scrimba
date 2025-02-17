@@ -15,7 +15,6 @@ matchedObj.forEach((item) => renderContact(item));
 function renderContact(contactObj) {
   const contactCard = document.createElement("aside");
   contactCard.classList.add("contact-card");
-  // console.log("hello");
   // rendering the current object fetched
   const nameElement = document.createElement("p");
   nameElement.textContent = contactObj.name;
