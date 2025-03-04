@@ -21,9 +21,9 @@ async function preloadImages(imageUrlsArr) {
     const uploadContainer = document.getElementById('upload-container')
     try {
         const results = await Promise.all(imageUrlsArr.map((url) => getImagePromise(url)));
-        results.forEach(img => imgContainer.appendChild(img));
         console.log('All images load successfully');
         uploadContainer.style.visibility = "hidden";
+        results.forEach(img => imgContainer.appendChild(img));
     } catch (err) {
         console.error(err);
     }
