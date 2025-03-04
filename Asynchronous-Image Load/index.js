@@ -19,6 +19,14 @@ const images = [
 async function preloadImages(imageUrlsArr) {
     const imgContainer = document.getElementById('img-container')
     const uploadContainer = document.getElementById('upload-container')
+    try {
+        const results = await Promise.all(imageUrlsArr.map((url) => getImagePromise(url)));
+        results.forEach(img => imgContainer.appendChild(img));
+        console.log('All images load successfully');
+        uploadContainer.style.visibility = "hidden";
+    } catch (err) {
+        console.error(err);
+    }
 /*
 Challenge:
   1. Create an array of promises using getImagePromise.
@@ -26,11 +34,12 @@ Challenge:
      in one go to a const 'results'.
   3. If the promises resolve: 
      - log "All images loaded successfully!".
-     - hide 'uploadContainer'
+     - hide 'uploadContainer'r
      - iterate over the results and render them to imgContainer.
   4. If the promises reject:
      - catch and log the error.
 */
+
 }
 
 document.getElementById('submit-imgs').addEventListener('click', () => preloadImages(images))
