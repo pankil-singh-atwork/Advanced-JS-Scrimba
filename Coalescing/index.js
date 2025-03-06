@@ -16,31 +16,15 @@ The existing code performs the following tasks:
 const collection = []
 
 function addBookToCollection(title, author, yearPublished, libraryData) {
-    // Explicitly check for title
-    if (title === undefined || title === null || title === '') {
-        title = 'Unknown Title'
-    }
-
-    // Explicitly check for author
-    if (author === undefined || author === null || author === '') {
-        author = 'Unknown Author'
-    }
-
-    // Explicitly check if yearPublished is undefined or null
-    if (yearPublished === undefined || yearPublished === null) {
-        yearPublished = 'Not Specified'
-    }
-
-    // Explicitly check for availability at main library
+    // setting the title
+    title = title || 'Unknown title'; // returns the first truthy value -> tilte = 'somebookname' 
+    // setting the author
+    author = author || 'Unknown Author'
+    // setting the year published
+    yearPublished = yearPublished ?? 'Not Specified';
+    // setting the availability
     let availability = 'Not Available' // Default value
-    if (libraryData) {
-        if (libraryData.locations) {
-            if (libraryData.locations.mainLibrary) {
-                availability = 'Available'
-            }
-        }
-    }
-
+    if(libraryData?.locations?.mainLibrary) availability = 'Available';
     // Push the book object to 'collection'
     collection.push({
         title: title,
@@ -54,7 +38,3 @@ addBookToCollection('JavaScript: The Good Parts', 'Douglas Crockford', 2008, { l
 addBookToCollection('', 'William Shakespeare', null, null, )
 addBookToCollection('House of Giants', 'Gemma Small', '', null, {locations: { mainLibrary: null}})
 console.log(collection) // House of Giants is not yet published!!
-
-
-
-
