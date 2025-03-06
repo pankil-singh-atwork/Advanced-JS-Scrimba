@@ -23,8 +23,7 @@ function addBookToCollection(title, author, yearPublished, libraryData) {
     // setting the year published
     yearPublished = yearPublished ?? 'Not Specified';
     // setting the availability
-    let availability = 'Not Available' // Default value
-    if(libraryData?.locations?.mainLibrary) availability = 'Available';
+    const availability = (libraryData?.locations?.mainLibrary && 'Available') || 'Not Available'
     // Push the book object to 'collection'
     collection.push({
         title: title,
