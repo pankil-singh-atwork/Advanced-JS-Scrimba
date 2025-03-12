@@ -10,18 +10,18 @@ const books = {
   // property in the object.
   
   const bookEntries = Object.entries(books);
+  bookEntries.filter(([id , book]) => book.price > 16).forEach(([id , book]) => console.log(`ID : ${id} Book : ${book.title} $${book.price}`))
   // console.log(bookEntries)
   // bookEntries = [[key , value]]
-  
   // extracting the [key , value] -> 
-  const hideItem = bookEntries.filter((item) => item[1].price < 16);
-  const showItem = bookEntries.filter((item) => item[1].price >= 16);
-  // console.log(showItem[0].)
-  showItem.forEach((currItem) => {
-    const [key , object] = currItem
-    const {title : bookTitle , price : bookPrice} = object
-    console.log(`ID : ${key} Book : ${bookTitle} $${bookPrice}`)
-  })
+  // const hideItem = bookEntries.filter((item) => item[1].price < 16);
+  // const showItem = bookEntries.filter((item) => item[1].price >= 16);
+  // // console.log(showItem[0].)
+  // showItem.forEach((currItem) => {
+  //   const [key , object] = currItem
+  //   const {title : bookTitle , price : bookPrice} = object
+  //   console.log(`ID : ${key} Book : ${bookTitle} $${bookPrice}`)
+  // })
   /*
   Challenge:
     1. Use Object.entries to create an array from 'books'.
